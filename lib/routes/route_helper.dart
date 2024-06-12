@@ -14,7 +14,7 @@ class RouteHelper {
 
 
   static List<GetPage> routes = [
-    GetPage(name: initial, page: ()=> MainFoodPage()),
+    GetPage(name: initial, page: ()=> const MainFoodPage()),
 
     GetPage(name: popularFood, page: (){
       var pageId = Get.parameters['pageId'];

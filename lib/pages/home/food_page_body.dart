@@ -11,7 +11,6 @@ import 'package:e_commerce_app/widgets/big_text.dart';
 import 'package:e_commerce_app/widgets/icon_and_text_widget.dart';
 import 'package:e_commerce_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class FoodPageBody extends StatefulWidget {
@@ -84,16 +83,16 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              BigText(text: "Recommended"),
+              const BigText(text: "Recommended"),
               SizedBox(width: Dimensions.width10,),
               Container(
                 margin: const EdgeInsets.only(bottom: 3),
-                child: BigText(text: ".", color: Colors.black26,),
+                child: const BigText(text: ".", color: Colors.black26,),
               ),
               SizedBox(width: Dimensions.width10,),
               Container(
                 margin: const EdgeInsets.only(bottom: 3),
-                child: SmallText(text: "Food Pairing"),
+                child: const SmallText(text: "Food Pairing"),
               )
             ],
           ),
