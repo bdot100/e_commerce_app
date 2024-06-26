@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/controllers/cart_controller.dart';
-import 'package:e_commerce_app/pages/home/main_food_page.dart';
+import 'package:e_commerce_app/routes/route_helper.dart';
 import 'package:e_commerce_app/utils/app_constants.dart';
 import 'package:e_commerce_app/utils/colors.dart';
 import 'package:e_commerce_app/utils/dimensions.dart';
@@ -7,7 +7,6 @@ import 'package:e_commerce_app/widgets/app_icon.dart';
 import 'package:e_commerce_app/widgets/big_text.dart';
 import 'package:e_commerce_app/widgets/small_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class CartPage extends StatelessWidget {
@@ -26,18 +25,25 @@ class CartPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  AppIcon(
-                    icon: Icons.arrow_back_ios,
-                    iconColor: Colors.white,
-                    backgroundColor: AppColors.mainColor,
-                    iconSize: Dimensions.iconSize24,
+                  // Back Icon
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(RouteHelper.getInitial());
+                    },
+                    child: AppIcon(
+                      icon: Icons.arrow_back_ios,
+                      iconColor: Colors.white,
+                      backgroundColor: AppColors.mainColor,
+                      iconSize: Dimensions.iconSize24,
+                    ),
                   ),
                   SizedBox(
                     width: Dimensions.width20 * 5,
                   ),
+                  // Home Icon
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => const MainFoodPage());
+                      Get.toNamed(RouteHelper.getInitial());
                     },
                     child: AppIcon(
                       icon: Icons.home_outlined,
@@ -46,6 +52,7 @@ class CartPage extends StatelessWidget {
                       iconSize: Dimensions.iconSize24,
                     ),
                   ),
+                  // Cart Icon
                   AppIcon(
                     icon: Icons.shopping_cart,
                     iconColor: Colors.white,
@@ -68,9 +75,11 @@ class CartPage extends StatelessWidget {
                   context: context,
                   removeTop: true,
                   child: GetBuilder<CartController>(builder: (cartController) {
+                    var cartList = cartController.getItems;
                     return ListView.builder(
-                        itemCount: cartController.getItems.length,
+                        itemCount: cartList.length,
                         itemBuilder: (_, index) {
+                          // ignore: sized_box_for_whitespace
                           return Container(
                             height: Dimensions.height20 * 5,
                             width: double.maxFinite,
@@ -98,6 +107,7 @@ class CartPage extends StatelessWidget {
                                   width: Dimensions.width10,
                                 ),
                                 Expanded(
+                                    // ignore: sized_box_for_whitespace
                                     child: Container(
                                   height: Dimensions.height20 * 5,
                                   child: Column(
@@ -111,7 +121,7 @@ class CartPage extends StatelessWidget {
                                             .getItems[index].name!,
                                         color: Colors.black54,
                                       ),
-                                      SmallText(text: "Spicy"),
+                                      const SmallText(text: "Spicy"),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -148,8 +158,9 @@ class CartPage extends StatelessWidget {
                                                   width: Dimensions.width10 / 2,
                                                 ),
                                                 BigText(
-                                                  text:
-                                                      "0", //popularProduct.inCartItems.toString()
+                                                  text: cartList[index]
+                                                      .quantity
+                                                      .toString(), //popularProduct.inCartItems.toString()
                                                 ),
                                                 SizedBox(
                                                   width: Dimensions.width10 / 2,

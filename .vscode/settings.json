@@ -1,5 +1,6 @@
 {
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "editor.formatOnType": true
+    "editor.formatOnType": true,
+    "cmake.sourceDirectory": "/Users/bidemisamson/SWE/Flutter Apps/e_commerce_app/windows/flutter"
 }

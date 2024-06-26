@@ -49,6 +49,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       children: [
         // slider section
         GetBuilder<PopularProductController>(builder: (popularProducts){
+          // ignore: sized_box_for_whitespace
           return popularProducts.isLoaded ? Container(
             height: Dimensions.pageView,
             child: PageView.builder(

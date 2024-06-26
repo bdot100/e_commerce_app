@@ -92,6 +92,7 @@ class PopularProductController extends GetxController {
     _quantity = 0;
     _inCartItems = _cart.getQuantity(product);
     _cart.items.forEach((key, value) {
+      // ignore: avoid_print
       print(
           "The id is ${value.id.toString()}, the quantity in cart is ${value.quantity.toString()}");
     });
