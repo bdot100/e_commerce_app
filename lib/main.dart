@@ -1,6 +1,5 @@
 import 'package:e_commerce_app/controllers/popular_products_controller.dart';
 import 'package:e_commerce_app/controllers/recommended_product_controller.dart';
-import 'package:e_commerce_app/pages/home/main_food_page.dart';
 import 'package:e_commerce_app/routes/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,8 +22,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'E-commerce App',
       debugShowCheckedModeBanner: false,
-      home: const MainFoodPage(),
-      initialRoute: RouteHelper.initial,
+      initialRoute: RouteHelper.getInitial(),
       getPages: RouteHelper.routes,
     );
   }

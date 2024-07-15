@@ -1,6 +1,5 @@
 import 'package:e_commerce_app/controllers/cart_controller.dart';
 import 'package:e_commerce_app/controllers/popular_products_controller.dart';
-import 'package:e_commerce_app/pages/home/main_food_page.dart';
 import 'package:e_commerce_app/routes/route_helper.dart';
 import 'package:e_commerce_app/utils/app_constants.dart';
 import 'package:e_commerce_app/utils/colors.dart';
@@ -14,7 +13,9 @@ import 'package:get/get.dart';
 
 class PopularFoodDetail extends StatelessWidget {
   final int pageId;
-  const PopularFoodDetail({super.key, required this.pageId});
+  final String page;
+  const PopularFoodDetail(
+      {super.key, required this.pageId, required this.page});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,11 @@ class PopularFoodDetail extends StatelessWidget {
                   // back icon
                   GestureDetector(
                       onTap: () {
-                        Get.to(() => const MainFoodPage());
+                        if (page == "cartpage") {
+                          Get.toNamed(RouteHelper.getCartPage());
+                        } else {
+                          Get.toNamed(RouteHelper.getInitial());
+                        }
                       },
                       child: const AppIcon(icon: Icons.arrow_back_ios)),
 
